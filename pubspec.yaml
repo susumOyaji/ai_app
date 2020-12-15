@@ -30,10 +30,10 @@ dependencies:
   cupertino_icons: ^1.0.0
 
   english_words: ^3.1.5 #add
-  firebase_core: ^0.5.3  # 追記
+  #firebase_core: ^0.5.2+1  # 追記
   firebase_ml_vision: ^0.9.10  # 追記
   image_picker: ^0.6.7+15  # 追記
-  camera: ^0.5.6+1  # 追記
+  #camera: ^0.5.6+1  # 追記
 
 
 dev_dependencies:
