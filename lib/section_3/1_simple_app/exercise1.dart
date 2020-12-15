@@ -5,29 +5,29 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp()); // 引数のWidgetが画面いっぱいに表示される
 
-List<String> generateHello({int start, int n}){
+List<String> generateHello({int start, int n}) {
   var _hs = <String>[];
-  for (int i=start; i<start+n; i++){
+  for (int i = start; i < start + n; i++) {
     _hs.add("Hello!" + i.toString());
   }
   return _hs;
 }
 
 // 状態を管理するクラスは、Stateクラスを継承
-class RandomWordsState extends  {
+class RandomWordsState extends State<RandomWords> {
   Widget _buildSuggestions() {
-    final _words = <String>[];  // 単語のペアを格納するリスト
-    return ListView.builder(
-        itemBuilder: (context, i) { // itemBuilderで一行ごとに処理が呼ばれる
-          if (i.isOdd) return Divider();  // 奇数行には水平線を表示
+    final _words = <String>[]; // 単語のペアを格納するリスト
+    return ListView.builder(itemBuilder: (context, i) {
+      // itemBuilderで一行ごとに処理が呼ばれる
+      if (i.isOdd) return Divider(); // 奇数行には水平線を表示
 
-          final index = i ~/ 2;  // ~/は結果が整数の割り算
-          if (index >= _words.length) {  // 行数がリストの要素数を越えれば
-            _words.addAll(generateHello(start: index, n: 10));  // 単語のペアを10個追加
-          }
-          return _buildRow(_words[index]);
-        }
-    );
+      final index = i ~/ 2; // ~/は結果が整数の割り算
+      if (index >= _words.length) {
+        // 行数がリストの要素数を越えれば
+        _words.addAll(generateHello(start: index, n: 10)); // 単語のペアを10個追加
+      }
+      return _buildRow(_words[index]);
+    });
   }
 
   // 単語のペアから、形式を整えた行のWidgetを作るメソッド
@@ -51,18 +51,20 @@ class RandomWordsState extends  {
 }
 
 // StatefulなWidgetのクラスは、StatefulWidgetを継承
-class RandomWords  {
+class RandomWords extends StatefulWidget {
   @override
   RandomWordsState createState() => RandomWordsState();
 }
 
 // 最初に表示するWidgetのクラス
-class MyApp extends StatelessWidget {  // StatelessWidgetを継承
+class MyApp extends StatelessWidget {
+  // StatelessWidgetを継承
   @override
-  Widget build(BuildContext context) {  //buildメソッドでUIを作成
-    return MaterialApp(  // マテリアルデザインのアプリ
-        title: "My Simple App",  // アプリのタイトル
-        home: RandomWords()
-    );
+  Widget build(BuildContext context) {
+    //buildメソッドでUIを作成
+    return MaterialApp(
+        // マテリアルデザインのアプリ
+        title: "My Simple App", // アプリのタイトル
+        home: RandomWords());
   }
 }
