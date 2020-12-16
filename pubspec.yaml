@@ -34,7 +34,7 @@ dependencies:
   firebase_ml_vision: ^0.9.10  # 追記
   image_picker: ^0.6.7+15  # 追記
   #camera: ^0.5.6+1  # 追記
-
+  cloud_firestore: ^0.14.0+1  # 追記
 
 dev_dependencies:
   flutter_test:
